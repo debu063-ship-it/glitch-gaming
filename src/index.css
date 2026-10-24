@@ -732,7 +732,7 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%);
   border-top-left-radius: 26px;
   border-top-right-radius: 26px;
-  pointer-events-none;
+  pointer-events: none;
 }
 
 .liquid-glass-card:hover {
