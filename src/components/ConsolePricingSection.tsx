@@ -5,7 +5,7 @@ interface ConsolePricingSectionProps {
 }
 
 interface ConsoleTier {
-  id: string
+  id: 'ps5' | 'ps4'
   name: string
   image: string
   singleRate: string
@@ -76,7 +76,7 @@ function ConsoleCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="liquid-glass-card p-6 sm:p-8 flex flex-col justify-between group cursor-default transition-transform duration-100 ease-out"
+      className="liquid-glass-card p-4 sm:p-7 md:p-8 rounded-2xl sm:rounded-[28px] flex flex-col justify-between group cursor-default transition-transform duration-100 ease-out"
       style={{
         transform: `perspective(1000px) translateX(${slideX}px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale(${
           rotate.x !== 0 || rotate.y !== 0 ? 1.02 : 1
@@ -96,14 +96,14 @@ function ConsoleCard({
 
       <div className="relative z-10">
         {/* Console Name Header */}
-        <div className="mb-5 text-center sm:text-left">
-          <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-wider uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+        <div className="mb-3 sm:mb-5 text-center sm:text-left">
+          <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-white tracking-wider uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             {tier.name}
           </h3>
         </div>
 
         {/* Console Product Showcase Image */}
-        <div className="relative w-full h-56 sm:h-64 rounded-2xl overflow-hidden mb-6 bg-black/40 border border-white/10 group-hover:border-cyan-400/40 transition-all shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
+        <div className="relative w-full h-44 sm:h-56 md:h-64 rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-black/40 border border-white/10 group-hover:border-cyan-400/40 transition-all shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
           <img
             src={tier.image}
             alt={tier.name}
@@ -115,31 +115,31 @@ function ConsoleCard({
       </div>
 
       {/* Bottom Rates Box (Single rate & Extra Player rate) */}
-      <div className="relative z-10 mt-auto pt-2">
-        <div className="p-4 sm:p-5 rounded-2xl bg-black/65 border border-cyan-400/50 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.7),0_0_20px_rgba(0,229,255,0.2)]">
-          <div className="grid grid-cols-2 gap-4 divide-x divide-white/15 mb-4">
+      <div className="relative z-10 mt-auto pt-1 sm:pt-2">
+        <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-black/65 border border-cyan-400/50 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.7),0_0_20px_rgba(0,229,255,0.2)]">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 divide-x divide-white/15 mb-3 sm:mb-4">
             {/* Single Player Rate */}
-            <div className="pr-3">
-              <span className="block font-mono text-[10px] sm:text-xs tracking-widest text-slate-400 uppercase font-semibold">
+            <div className="pr-2 sm:pr-3">
+              <span className="block font-mono text-[9px] sm:text-xs tracking-widest text-slate-400 uppercase font-semibold">
                 SINGLE
               </span>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className="font-display font-black text-2xl sm:text-3xl text-cyan-400 tracking-tight drop-shadow-[0_0_16px_rgba(0,229,255,0.7)]">
+              <div className="flex items-baseline gap-1 mt-0.5 sm:mt-1">
+                <span className="font-display font-black text-xl sm:text-3xl text-cyan-400 tracking-tight drop-shadow-[0_0_16px_rgba(0,229,255,0.7)]">
                   {tier.singleRate}
                 </span>
-                <span className="font-mono text-xs sm:text-sm text-slate-300 font-semibold uppercase">
+                <span className="font-mono text-[10px] sm:text-sm text-slate-300 font-semibold uppercase">
                   / hr
                 </span>
               </div>
             </div>
 
             {/* Extra Player Rate */}
-            <div className="pl-4">
-              <span className="block font-mono text-[10px] sm:text-xs tracking-widest text-slate-400 uppercase font-semibold">
+            <div className="pl-3 sm:pl-4">
+              <span className="block font-mono text-[9px] sm:text-xs tracking-widest text-slate-400 uppercase font-semibold">
                 EXTRA PLAYER
               </span>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight drop-shadow-[0_0_14px_rgba(255,255,255,0.6)]">
+              <div className="flex items-baseline gap-1 mt-0.5 sm:mt-1">
+                <span className="font-display font-black text-xl sm:text-3xl text-white tracking-tight drop-shadow-[0_0_14px_rgba(255,255,255,0.6)]">
                   {tier.extraPlayerRate}
                 </span>
               </div>
@@ -150,7 +150,7 @@ function ConsoleCard({
           <button
             type="button"
             onClick={() => onReserve?.(`${tier.name} Console Station`)}
-            className="w-full py-3 rounded-xl bg-cyan-400/20 hover:bg-cyan-400 border border-cyan-400/60 hover:border-cyan-300 text-cyan-300 hover:text-black font-display font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(0,229,255,0.2)] flex items-center justify-center gap-2 group/btn"
+            className="w-full py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-cyan-400/20 hover:bg-cyan-400 border border-cyan-400/60 hover:border-cyan-300 text-cyan-300 hover:text-black font-display font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(0,229,255,0.2)] flex items-center justify-center gap-2 group/btn"
           >
             <span>RESERVE {tier.name}</span>
             <span className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
@@ -164,6 +164,7 @@ function ConsoleCard({
 export default function ConsolePricingSection({ onReserve }: ConsolePricingSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
+  const [mobileTab, setMobileTab] = useState<'ps5' | 'ps4'>('ps5')
 
   // Track scroll progress through this pinned experience
   useEffect(() => {
@@ -194,34 +195,33 @@ export default function ConsolePricingSection({ onReserve }: ConsolePricingSecti
     }
   }, [])
 
-  // Scroll Sliding Mechanics (Matches previous segments):
-  // - Phase 1 (progress 0 -> 0.30): Cards slide in from Left & Right towards center
-  // - Phase 2 (progress 0.30 -> 0.70): Stable resting zone, cards locked at center (translateX = 0, opacity = 1)
-  // - Phase 3 (progress 0.70 -> 1.0): Cards smoothly slide out to Left & Right as footer arrives
+  // Scroll Sliding Mechanics
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640
+  const slideDistance = isMobile ? 60 : 160
+
   let leftSlideX = 0
   let rightSlideX = 0
   let cardOpacity = 1
 
   if (progress < 0.30) {
     const t = Math.max(0, progress / 0.30)
-    const ease = 1 - Math.pow(1 - t, 3) // smooth cubic ease out
-    leftSlideX = -(1 - ease) * 160 // arrives from -160px to 0
-    rightSlideX = (1 - ease) * 160 // arrives from +160px to 0
+    const ease = 1 - Math.pow(1 - t, 3)
+    leftSlideX = -(1 - ease) * slideDistance
+    rightSlideX = (1 - ease) * slideDistance
     cardOpacity = Math.max(0, ease)
   } else if (progress > 0.70) {
     const t = Math.min(1, (progress - 0.70) / 0.30)
-    const ease = Math.pow(t, 2) // smooth ease in
-    leftSlideX = -ease * 160 // vanishes to -160px
-    rightSlideX = ease * 160 // vanishes to +160px
+    const ease = Math.pow(t, 2)
+    leftSlideX = -ease * slideDistance
+    rightSlideX = ease * slideDistance
     cardOpacity = Math.max(0, 1 - ease * 1.1)
   } else {
-    // Locked in center! 100% visible, fully readable
     leftSlideX = 0
     rightSlideX = 0
     cardOpacity = 1
   }
 
-  // Background Parallax: image glides smoothly on Y
+  // Background Parallax
   const bgTranslateY = (progress - 0.5) * 100
   const bgScale = 1.04 + Math.sin(progress * Math.PI) * 0.03
 
@@ -256,19 +256,50 @@ export default function ConsolePricingSection({ onReserve }: ConsolePricingSecti
 
         {/* 2. Content Container: Minimal Liquid Frosted Glass Cards (PS5 & PS4) */}
         <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+          {/* Mobile Tab Switcher */}
+          <div className="flex md:hidden items-center justify-center gap-2 mb-3">
+            <button
+              type="button"
+              onClick={() => setMobileTab('ps5')}
+              className={`px-4 py-1.5 rounded-full font-display font-bold text-xs tracking-wider transition-all cursor-pointer ${
+                mobileTab === 'ps5'
+                  ? 'bg-cyan-400 text-black shadow-[0_0_15px_rgba(0,229,255,0.6)]'
+                  : 'bg-black/60 text-slate-300 border border-white/20'
+              }`}
+            >
+              PLAYSTATION 5
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileTab('ps4')}
+              className={`px-4 py-1.5 rounded-full font-display font-bold text-xs tracking-wider transition-all cursor-pointer ${
+                mobileTab === 'ps4'
+                  ? 'bg-cyan-400 text-black shadow-[0_0_15px_rgba(0,229,255,0.6)]'
+                  : 'bg-black/60 text-slate-300 border border-white/20'
+              }`}
+            >
+              PLAYSTATION 4
+            </button>
+          </div>
+
+          {/* Grid Layout: Single Card on Mobile, 2 Cards on Desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
             {CONSOLE_TIERS.map((tier) => {
               const isLeft = tier.side === 'left'
               const slideX = isLeft ? leftSlideX : rightSlideX
 
               return (
-                <ConsoleCard
+                <div
                   key={tier.id}
-                  tier={tier}
-                  slideX={slideX}
-                  opacity={cardOpacity}
-                  onReserve={onReserve}
-                />
+                  className={tier.id === mobileTab ? 'block' : 'hidden md:block'}
+                >
+                  <ConsoleCard
+                    tier={tier}
+                    slideX={slideX}
+                    opacity={cardOpacity}
+                    onReserve={onReserve}
+                  />
+                </div>
               )
             })}
           </div>

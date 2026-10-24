@@ -89,7 +89,7 @@ function InteractiveLiquidCard({
       onClick={() => onReserve?.(card.title)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="liquid-glass-card p-6 sm:p-7 md:p-8 flex flex-col justify-between group cursor-pointer transition-transform duration-100 ease-out"
+      className="liquid-glass-card p-3.5 sm:p-7 md:p-8 rounded-2xl sm:rounded-[28px] flex flex-col justify-between group cursor-pointer transition-transform duration-100 ease-out"
       style={{
         transform: `perspective(1000px) translateX(${slideX}px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale(${
           rotate.x !== 0 || rotate.y !== 0 ? 1.03 : 1
@@ -109,18 +109,18 @@ function InteractiveLiquidCard({
 
       <div className="relative z-10">
         {/* Pulsing Cyber Cyan Number/Stat */}
-        <div className="font-display font-black text-3xl sm:text-4xl md:text-5xl text-cyan-400 tracking-tight mb-3 drop-shadow-[0_0_22px_rgba(0,229,255,0.8)] group-hover:text-cyan-300 transition-colors animate-glow-pulse">
+        <div className="font-display font-black text-2xl sm:text-4xl md:text-5xl text-cyan-400 tracking-tight mb-1 sm:mb-3 drop-shadow-[0_0_22px_rgba(0,229,255,0.8)] group-hover:text-cyan-300 transition-colors animate-glow-pulse">
           {card.stat}
         </div>
 
         {/* Uppercase Bold Headline */}
-        <h3 className="font-display font-black text-lg sm:text-xl md:text-2xl text-white tracking-wide uppercase leading-tight mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+        <h3 className="font-display font-black text-xs sm:text-lg md:text-2xl text-white tracking-wide uppercase leading-tight mb-1 sm:mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
           {card.title}
         </h3>
       </div>
 
       {/* Clean Subtitle Description */}
-      <p className="relative z-10 font-body text-xs sm:text-sm md:text-base text-slate-200/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] mt-2">
+      <p className="relative z-10 font-body text-[10px] sm:text-sm md:text-base text-slate-200/90 leading-tight sm:leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] mt-1 sm:mt-2 line-clamp-3 sm:line-clamp-none">
         {card.desc}
       </p>
     </div>
@@ -168,17 +168,20 @@ export default function WukongFeatureSection({ onReserve }: WukongFeatureSection
   let rightSlideX = 0
   let cardOpacity = 1
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640
+  const slideDistance = isMobile ? 60 : 160
+
   if (progress < 0.30) {
     const t = Math.max(0, progress / 0.30)
     const ease = 1 - Math.pow(1 - t, 3) // smooth cubic ease out
-    leftSlideX = -(1 - ease) * 160 // arrives from -160px to 0
-    rightSlideX = (1 - ease) * 160 // arrives from +160px to 0
+    leftSlideX = -(1 - ease) * slideDistance // arrives from -slideDistance to 0
+    rightSlideX = (1 - ease) * slideDistance // arrives from +slideDistance to 0
     cardOpacity = Math.max(0, ease)
   } else if (progress > 0.70) {
     const t = Math.min(1, (progress - 0.70) / 0.30)
     const ease = Math.pow(t, 2) // smooth ease in
-    leftSlideX = -ease * 160 // vanishes to -160px
-    rightSlideX = ease * 160 // vanishes to +160px
+    leftSlideX = -ease * slideDistance // vanishes to -slideDistance
+    rightSlideX = ease * slideDistance // vanishes to +slideDistance
     cardOpacity = Math.max(0, 1 - ease * 1.1)
   } else {
     // Locked in center! 100% visible, fully readable
@@ -247,8 +250,8 @@ export default function WukongFeatureSection({ onReserve }: WukongFeatureSection
         </div>
 
         {/* 2. ONLY THE 4 LIQUID FROSTED GLASS CARDS (Sliding in from Left & Right) */}
-        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-3 sm:px-6">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-6 lg:gap-8">
             {WUKONG_CARDS.map((card) => {
               const isLeft = card.side === 'left'
               const slideX = isLeft ? leftSlideX : rightSlideX

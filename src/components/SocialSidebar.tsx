@@ -125,7 +125,7 @@ export default function SocialSidebar({ onOpenVirtualTour }: SocialSidebarProps)
   return (
     <aside
       aria-label="Social and Quick Contact Links"
-      className="fixed left-0 top-1/2 -translate-y-1/2 z-40 flex flex-col shadow-2xl select-none"
+      className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-40 flex-col shadow-2xl select-none"
     >
       {items.map((item) => {
         const isHovered = hoveredId === item.id

@@ -109,25 +109,25 @@ export default function ScrollingShowcase({ onSelectStation }: ScrollingShowcase
                 </div>
               </div>
 
-              {/* 2. Hero Typography Content on the Left (Responsive on Phone & Laptop, padded for sidebar) */}
+              {/* 2. Hero Typography Content on the Left (Responsive on Phone & Laptop) */}
               <div
-                className="relative z-20 h-full w-full max-w-7xl mx-auto pl-14 sm:pl-16 md:pl-20 lg:pl-24 pr-5 sm:pr-12 lg:pr-16 flex flex-col justify-center pointer-events-auto"
+                className="relative z-20 h-full w-full max-w-7xl mx-auto px-6 sm:px-12 md:pl-20 lg:pl-24 pr-6 sm:pr-12 lg:pr-16 flex flex-col justify-center pointer-events-auto"
                 style={{
                   transform: `translateX(${textTranslateX}px)`,
                   opacity: textOpacity,
                   transition: 'transform 0.05s linear, opacity 0.05s linear',
                 }}
               >
-                <div className="max-w-2xl pt-16 sm:pt-0">
-                  {/* Category Indicator Badge (glowing dot removed) */}
+                <div className="max-w-2xl pt-20 sm:pt-0">
+                  {/* Category Indicator Badge */}
                   <div className="mb-3 sm:mb-6">
                     <span className="font-display font-semibold text-xs sm:text-sm tracking-[0.22em] text-white/90 uppercase">
                       {slide.categoryTitle}
                     </span>
                   </div>
 
-                  {/* Mammoth Headline (Matches screenshot: Solid top words + Outline stroked bottom words) */}
-                  <h1 className="font-bebas font-black text-[14vw] sm:text-[12vw] md:text-[8.8vw] lg:text-[7.4vw] xl:text-[6.8vw] leading-[0.88] tracking-[0.02em] uppercase select-none mb-4 sm:mb-6">
+                  {/* Mammoth Headline */}
+                  <h1 className="font-bebas font-black text-[13vw] sm:text-[11vw] md:text-[8.8vw] lg:text-[7.4vw] xl:text-[6.8vw] leading-[0.88] tracking-[0.02em] uppercase select-none mb-4 sm:mb-6">
                     {/* Solid White Words: 'RIDE', 'BEYOND' */}
                     {slide.solidWords.map((word, wIdx) => (
                       <span key={`solid-${wIdx}`} className="block text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
